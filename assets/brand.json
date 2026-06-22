@@ -1,0 +1,15 @@
+{
+  "_comment": "외부화된 브랜드/테마 토큰 (open-carrusel brand.json 패턴). build 시 CARD_DATA.brand / CARD_DATA.theme 로 주입.",
+  "accounts": {
+    "us": { "brandName": "Keens", "handle": "@KEENSACADEMY", "lang": "en",
+            "theme": "stage-photo", "accent": "#E8472B" },
+    "kr": { "brandName": "Keens", "handle": "@KEENS_KR_TBD", "lang": "ko",
+            "theme": "stage-photo", "accent": "#E8472B",
+            "_note": "신규 한국 계정 핸들 확정 시 handle 교체" }
+  },
+  "themes": {
+    "stage-photo":   { "desc": "기본: 다크 시네마틱 스테이지 사진 + 흰 헤드라인 + 레드 액센트" },
+    "editorial-gold":{ "desc": "프리미엄 에디토리얼(prompt_what 차용): 차콜+골드+크림, 큰 인덱스/공식 카드, 사진 없이 플랫",
+                       "tokens": { "photoBase": "#0E1116", "accent": "#C8A24B", "cream": "#F3EFE6", "font": "Noto Sans KR" } }
+  }
+}

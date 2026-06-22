@@ -1,0 +1,66 @@
+{
+  "voice": "Keens 신규 한국 계정 — 미국식 카드뉴스 포맷 + 냉정한 전문가 직설(한국어)",
+  "dm_keyword": "레벨테스트",
+  "posts": [
+    {
+      "post_id": "KR-01-face", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"오디션의 진실","headline":"심사위원은\n얼굴부터 <span class='hl'>안 봅니다.</span>","subhead":"가장 먼저 보는 건 <strong>‘마무리’</strong>입니다."},
+        {"kicker":"첫 8초","stat":"8<span class='unit'>초</span>","headline":"안에\n갈립니다.","subhead":"외모가 아니라 <strong>첫 8초의 존재감</strong>입니다."},
+        {"kicker":"‘마무리’란","headline":"동작을\n끝내는 방식.","subhead":"마지막 박자, 끝까지 가는 호흡, 음악이 멈춘 뒤의 눈빛."},
+        {"kicker":"왜 중요한가","headline":"시작은\n누구나 잘한다.","subhead":"심사위원은 <strong>끝까지 못 버티는 사람</strong>을 골라냅니다."},
+        {"kicker":"당신의 차례","headline":"내 ‘마무리’부터\n<span class='hl'>확인하세요.</span>","subhead":"현직 트레이너의 무료 진단을 받아보세요.","cta":"무료 레벨 테스트"}
+      ]
+    },
+    {
+      "post_id": "KR-02-hours", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"착각 01","headline":"“연습량이\n부족해서다.”","subhead":"연습 시간은 문제가 아닙니다. <span class='hl'>방향</span>이 문제입니다."},
+        {"kicker":"왜 위험한가","headline":"방향 없는\n연습은,","subhead":"실수를 <strong>몸에 새깁니다.</strong>"},
+        {"kicker":"합격생의 차이","stat":"3<span class='unit'>일</span>","headline":"마다 피드백을\n받았다.","subhead":"혼자 한 시간이 아니라 <strong>고쳐온 횟수</strong>가 실력을 만듭니다."},
+        {"kicker":"핵심","headline":"한 횟수보다\n고친 횟수.","subhead":"반복은 실력을 만들지 않습니다. <strong>교정된 반복</strong>이 만듭니다."},
+        {"kicker":"당신의 차례","headline":"첫 피드백 루프를\n<span class='hl'>시작하세요.</span>","subhead":"다음 달이 아니라 이번 주에 교정받으세요.","cta":"무료 레벨 테스트"}
+      ]
+    },
+    {
+      "post_id": "KR-03-pretty", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"냉정한 진실","headline":"예쁜 연습생이\n먼저 <span class='hl'>떨어진다.</span>","subhead":"외모는 기준을 ‘올릴’ 뿐, 넘어주지 않습니다."},
+        {"kicker":"함정","headline":"얼굴에\n기대는 순간.","subhead":"외모로 들어왔다면, <strong>실력으로 버텨야</strong> 합니다."},
+        {"kicker":"실제로는","headline":"기대치가\n올라간다.","subhead":"강한 비주얼일수록 심사위원은 <strong>더</strong>를 기대합니다."},
+        {"kicker":"역전","headline":"예상 못 한\n사람이 되라.","subhead":"‘과소평가 + 준비됨’이 가장 강한 포지션입니다."},
+        {"kicker":"당신의 차례","headline":"외모 빼고\n<span class='hl'>내 위치</span>를 보라.","subhead":"실력 기준의 냉정한 진단을 받아보세요.","cta":"무료 레벨 테스트"}
+      ]
+    },
+    {
+      "post_id": "KR-04-copy", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"오디션의 진실","headline":"따라 한 무대는\n3초 만에 <span class='hl'>들킨다.</span>","subhead":"남의 무대를 복사하는 건 가장 빠른 탈락 루트입니다."},
+        {"kicker":"왜","headline":"그들은 원본을\n천 번 봤다.","subhead":"당신의 카피는 늘 ‘그들이 사랑한 버전’과 비교됩니다."},
+        {"kicker":"원하는 것","headline":"복제가 아니라\n해석.","subhead":"정직한 선택 하나가 완벽한 모사를 이깁니다."},
+        {"kicker":"전환","headline":"곡을 커버하되\n가수를 흉내 내지 마라.","subhead":"실력은 가져오고, <strong>성대모사는 버리세요.</strong>"},
+        {"kicker":"당신의 차례","headline":"나만의 무대를\n<span class='hl'>설계하세요.</span>","subhead":"내 목소리와 몸이 빛나는 지점부터 찾습니다.","cta":"무료 레벨 테스트"}
+      ]
+    },
+    {
+      "post_id": "KR-05-late", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"두려움의 이름","headline":"“너무 늦은 거\n아닐까?”","subhead":"그 생각이 나이보다 더 <span class='hl'>발목을 잡습니다.</span>"},
+        {"kicker":"데이터","stat":"19","headline":"세, 흔한\n시작 나이.","subhead":"데뷔조 연습생도 생각보다 <strong>늦게</strong> 시작합니다."},
+        {"kicker":"핵심","headline":"시작 나이가 아니라\n성장 속도.","subhead":"기획사는 출생연도가 아니라 <strong>성장 곡선</strong>에 베팅합니다."},
+        {"kicker":"단,","headline":"늦게 + 잘못된 방향\n= 잃은 시간.","subhead":"그래서 ‘진단’이 연습보다 먼저입니다."},
+        {"kicker":"당신의 차례","headline":"지금이 내 때인지\n<span class='hl'>확인하세요.</span>","subhead":"오늘 내 위치에 대한 정직한 진단을 받아보세요.","cta":"무료 레벨 테스트"}
+      ]
+    },
+    {
+      "post_id": "KR-06-breath", "lang": "ko", "total": 5,
+      "cards": [
+        {"kicker":"보컬의 진실","headline":"목소리가 아니라\n<span class='hl'>호흡</span>이 문제다.","subhead":"대부분의 ‘음정 문제’는 호흡에서 시작됩니다."},
+        {"kicker":"신호","headline":"후렴 전에\n숨이 찬다.","subhead":"그건 음역대가 아니라 <strong>호흡 관리</strong>입니다."},
+        {"kicker":"트레이너가 듣는 것","headline":"재능이 아니라\n긴장.","subhead":"굳은 호흡은 모든 음을 실제보다 작게 만듭니다."},
+        {"kicker":"해결","headline":"부르기 전에\n‘지지’부터.","subhead":"호흡이 잡히면 음정 문제 대부분이 사라집니다."},
+        {"kicker":"당신의 차례","headline":"내 진짜 보컬 레벨을\n<span class='hl'>들어보세요.</span>","subhead":"현직 보컬 트레이너의 분석을 받아보세요.","cta":"무료 레벨 테스트"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "voice": "Keens US (@keensacademy) — insider, contrarian, myth-busting, data-backed honesty",
+  "dm_keyword": "LEVELCHECK",
+  "posts": [
+    {
+      "post_id": "US-01-reddit", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"KPOP AUDITION","headline":"Reddit got\nKPOP auditions <span class='hl'>wrong.</span>","subhead":"Age, skill, visuals — <strong>what agencies actually read.</strong>"},
+        {"kicker":"MYTH 01","headline":"“You need to be\nyoung to start.”","subhead":"Most debuted trainees started <strong>later than you'd think.</strong>"},
+        {"kicker":"WHAT THEY READ","headline":"They watch how\nyou <span class='hl'>recover.</span>","subhead":"A clean recovery from a mistake beats a flawless-but-safe run."},
+        {"kicker":"THE TRUTH","headline":"Visuals open the door.\nFinish keeps it open.","subhead":"Looks get attention. <strong>Execution</strong> gets remembered."},
+        {"kicker":"YOUR MOVE","headline":"Get your\n<span class='hl'>KPOP Level Check.</span>","subhead":"See what evaluators would actually see.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-02-face", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"AUDITION TRUTH","headline":"Evaluators don't\nread your face <span class='hl'>first.</span>","subhead":"They read your <strong>finish.</strong>"},
+        {"kicker":"THE FIRST 8 SEC","stat":"8<span class='unit'>sec</span>","headline":"to decide\nif you stay.","subhead":"Not your looks — your <strong>first 8 seconds of presence.</strong>"},
+        {"kicker":"WHAT 'FINISH' MEANS","headline":"How you end\nthe move.","subhead":"The last beat, the held note, the eye line after the music stops."},
+        {"kicker":"WHY IT MATTERS","headline":"Anyone can start\nstrong.","subhead":"Evaluators are paid to spot who <strong>can't hold it.</strong>"},
+        {"kicker":"YOUR MOVE","headline":"Find your\n<span class='hl'>weak finish.</span>","subhead":"Then fix it before your next audition.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-03-habit", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"THE PATTERN","headline":"The fastest trainees\nshare <span class='hl'>one habit.</span>","subhead":"It has nothing to do with how long they practice."},
+        {"kicker":"NOT THIS","headline":"More hours\nin the room.","subhead":"Long solo practice <strong>locks in your mistakes.</strong>"},
+        {"kicker":"THIS","stat":"3<span class='unit'>day</span>","headline":"feedback loops.","subhead":"They get corrected every few days — <strong>not every few weeks.</strong>"},
+        {"kicker":"WHY","headline":"Speed of fixing\n> hours of doing.","subhead":"Reps don't build skill. <strong>Corrected reps</strong> do."},
+        {"kicker":"YOUR MOVE","headline":"Start your\n<span class='hl'>first loop.</span>","subhead":"Get corrected this week, not next month.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-04-breathing", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"VOCAL TRUTH","headline":"Your voice isn't\nthe problem.","subhead":"Your <span class='hl'>breathing</span> is."},
+        {"kicker":"THE SIGN","headline":"You run out\nbefore the chorus.","subhead":"That's not range. That's <strong>air management.</strong>"},
+        {"kicker":"WHAT TRAINERS HEAR","headline":"Tension, not\ntalent.","subhead":"A tight breath makes every note sound smaller than it is."},
+        {"kicker":"THE FIX","headline":"Support before\nyou sing.","subhead":"Most 'pitch problems' disappear once the breath is fixed."},
+        {"kicker":"YOUR MOVE","headline":"Hear your real\n<span class='hl'>vocal level.</span>","subhead":"Get a breakdown from a working vocal trainer.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-05-pretty", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"HARD TRUTH","headline":"Why “pretty” trainees\nget cut <span class='hl'>first.</span>","subhead":"Visuals raise the bar. They don't clear it."},
+        {"kicker":"THE TRAP","headline":"Relying on\nthe face.","subhead":"If looks got you in, <strong>skill has to keep you in.</strong>"},
+        {"kicker":"WHAT HAPPENS","headline":"The bar moves\nup, not down.","subhead":"Evaluators expect more from a strong visual, not less."},
+        {"kicker":"THE EDGE","headline":"Be the one they\ndidn't expect.","subhead":"Underestimated + prepared is the strongest position in the room."},
+        {"kicker":"YOUR MOVE","headline":"Find your real\n<span class='hl'>gap.</span>","subhead":"Looks aside — where do you actually stand?","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-06-copy", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"AUDITION TRUTH","headline":"Agencies spot a\n<span class='hl'>copy</span> in 3 seconds.","subhead":"Performing someone else's stage is the fastest way out."},
+        {"kicker":"WHY","headline":"They've seen the\noriginal 1,000 times.","subhead":"Your copy is always compared to the version they love."},
+        {"kicker":"WHAT THEY WANT","headline":"Your read,\nnot your replica.","subhead":"One honest choice beats a perfect imitation."},
+        {"kicker":"THE SHIFT","headline":"Cover the song.\nDon't cover the artist.","subhead":"Keep the skill. <strong>Drop the impression.</strong>"},
+        {"kicker":"YOUR MOVE","headline":"Build a stage\n<span class='hl'>that's yours.</span>","subhead":"Start with where your voice and body actually shine.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-07-late", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"NAME THE FEAR","headline":"“Am I too late?”","subhead":"That thought is doing more damage than your age."},
+        {"kicker":"THE DATA","stat":"19","headline":"is a common\nstart age.","subhead":"Plenty of debuted trainees began their real training <strong>later than you assume.</strong>"},
+        {"kicker":"WHAT MATTERS","headline":"Growth speed,\nnot start date.","subhead":"Agencies bet on <strong>trajectory</strong>, not birth year."},
+        {"kicker":"THE CATCH","headline":"Late + wrong\ndirection = lost time.","subhead":"That's exactly why you diagnose before you grind."},
+        {"kicker":"YOUR MOVE","headline":"See if now\nis <span class='hl'>your time.</span>","subhead":"Get an honest read on where you stand today.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-08-dancemove", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"DANCE TRUTH","headline":"One move fails\nmost <span class='hl'>auditions.</span>","subhead":"And it's not the hard one."},
+        {"kicker":"THE CULPRIT","headline":"The transition,\nnot the trick.","subhead":"Everyone drills the highlight. <strong>Nobody drills the in-between.</strong>"},
+        {"kicker":"WHAT THEY SEE","headline":"Clean moves,\nmessy joins.","subhead":"Sloppy transitions tell evaluators you rehearsed in pieces."},
+        {"kicker":"THE FIX","headline":"Train the\nconnective tissue.","subhead":"Smooth joins read as control — and control reads as ready."},
+        {"kicker":"YOUR MOVE","headline":"Find your\n<span class='hl'>broken join.</span>","subhead":"Get your dance read frame by frame.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-09-song", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"AUDITION PREP","headline":"What a “good”\naudition song <span class='hl'>is.</span>","subhead":"Hint: not the hardest one you can sing."},
+        {"kicker":"THE MISTAKE","headline":"Picking for\ndifficulty.","subhead":"A song you barely survive shows the ceiling, not the skill."},
+        {"kicker":"THE RULE","headline":"Choose the song\nthat shows control.","subhead":"Comfortable + expressive beats hard + tense, every time."},
+        {"kicker":"BONUS","headline":"Leave room\nto react.","subhead":"Evaluators want to see <strong>you</strong>, not a survival run."},
+        {"kicker":"YOUR MOVE","headline":"Find your\n<span class='hl'>right song.</span>","subhead":"Match a song to your actual range and tone.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-10-foreign", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"FOREIGN TRAINEES","headline":"The one thing that\nbeats fluent <span class='hl'>Korean.</span>","subhead":"Language helps. It isn't what gets you picked."},
+        {"kicker":"REALITY","headline":"Agencies train\nlanguage.","subhead":"They can teach Korean. They can't teach <strong>presence.</strong>"},
+        {"kicker":"THE EDGE","headline":"Be undeniable\nwithout words.","subhead":"Your body and tone speak before your accent does."},
+        {"kicker":"THE TRAP","headline":"Hiding behind\n“my Korean.”","subhead":"Don't let language become the excuse for not preparing the rest."},
+        {"kicker":"YOUR MOVE","headline":"Show what\n<span class='hl'>translates.</span>","subhead":"Get a read that focuses on skill, not your passport.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-11-presence", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"STAGE TRUTH","headline":"Stage presence\nisn't <span class='hl'>charisma.</span>","subhead":"It's something you can actually train."},
+        {"kicker":"WHAT IT IS","headline":"Knowing where\nto put attention.","subhead":"Eyes, weight, timing — placed on purpose, not by luck."},
+        {"kicker":"THE TELL","headline":"Calm hands,\nclear eye line.","subhead":"Nervous energy leaks from the parts you forget to control."},
+        {"kicker":"THE BUILD","headline":"Presence is reps,\nnot personality.","subhead":"You rehearse it the same way you rehearse a chorus."},
+        {"kicker":"YOUR MOVE","headline":"Train your\n<span class='hl'>presence.</span>","subhead":"Start by seeing where your attention goes.","cta":"Free Level Check"}
+      ]
+    },
+    {
+      "post_id": "US-12-online", "lang": "en", "total": 5,
+      "cards": [
+        {"kicker":"ONLINE AUDITION","headline":"The real reason\nyou keep <span class='hl'>failing.</span>","subhead":"It's usually not your talent."},
+        {"kicker":"REASON 01","headline":"The first 3 seconds\nare empty.","subhead":"A slow intro gets your video closed before the hook."},
+        {"kicker":"REASON 02","headline":"Bad framing\nhides your best.","subhead":"Wrong angle and light can erase a strong performance."},
+        {"kicker":"REASON 03","headline":"No clear\nhighlight.","subhead":"If they can't find your peak in 15 seconds, they move on."},
+        {"kicker":"YOUR MOVE","headline":"Fix the tape,\n<span class='hl'>not just the talent.</span>","subhead":"Get your online audition reviewed end to end.","cta":"Free Level Check"}
+      ]
+    }
+  ]
+}
