@@ -56,8 +56,11 @@ def main():
     ap.add_argument("--kids",action="store_true"); ap.add_argument("--brand",action="store_true")
     ap.add_argument("--prefer-dark",action="store_true",default=True)
     ap.add_argument("--root",default=""); ap.add_argument("--emit-map",action="store_true")
+    ap.add_argument("--exclude",default="",help="comma-separated filenames to skip (avoid reusing across sets)")
     a=ap.parse_args()
     doc=json.load(open(a.index,encoding="utf-8")); assets=doc["assets"]
+    excl={x.strip() for x in a.exclude.split(",") if x.strip()}
+    if excl: assets=[r for r in assets if r["file"] not in excl]
 
     if a.sequence:
         beats=[b.strip() for b in a.sequence.split(",") if b.strip()]
