@@ -76,6 +76,23 @@ node scripts/build_cards.js <COMPOSED_JSON> out/<acct> <OUT_BG_DIR> --template s
 `compose_scenes.py` does EXIF-fix + 4:5 crop + strong bottom scrim (text legibility) and injects per-card `bg`.
 **Casting rule (required):** scene people must match the target market — KR set → Korean people & contexts; US set → global casting (see `references/brand_and_voice.md` v2.2). Write generation prompts accordingly (e.g. "a worried Korean mother…", "Korean teenage students…").
 
+### Step 3c — Real-photo backgrounds via asset index (recommended for KR — no "AI look")
+Practitioner feedback: parents react negatively to an obvious "AI" feel, so for KR sets **prefer real photos from the Keens library** over AI-generated scenes (see `references/ASSET_INDEX_README.md`). Scanning hundreds of photos every run is token-expensive, so the library is **indexed once** (vision-caption -> text) and then queried as text.
+
+1. Index the library (one-time + incremental — only new files are vision-tagged):
+   ```bash
+   python3 scripts/index_assets.py "<ASSET_DIR>" --out assets_index.json [--video-keyframe]
+   ```
+2. Pick one photo per card beat (text-only, ~0 vision tokens) and emit a compose map:
+   ```bash
+   MAP=$(python3 scripts/select_assets.py assets_index.json \
+     --sequence hook_intro,doubt,turn_diagnosis,method_lesson,joy_basics,checklist_text,cta \
+     --root "<ASSET_DIR>" --emit-map)
+   python3 scripts/compose_scenes.py <BATCH_JSON> /tmp/none <OUT_BG_DIR> <COMPOSED_JSON> --map "$MAP"
+   node scripts/build_cards.js <COMPOSED_JSON> out/<acct> <OUT_BG_DIR> --template scripts/card_template_keens.html ...
+   ```
+Beat vocab: hook_intro, doubt, turn_diagnosis, method_lesson, joy_basics, checklist_text, cta, finale. Filters: `--kids --brand --prefer-dark`. Use AI scene generation (3b) **only to fill beats the library lacks**. For an A/B test (AI vs real), keep copy/layout/theme identical and swap only `bg`.
+
 ### Step 4 — Hand off (external, do not post from here)
 Read `references/nocode_publishing.md`. Sync `OUT_DIR/` to the public host so `image_urls` resolve, then let **Buffer/Later/Make** read the CSV and publish on `scheduled_date`. **ManyChat** keyword = each post's `dm_keyword` drives the comment→DM funnel to the Level Test landing.
 
@@ -85,6 +102,7 @@ Don't auto-publish at first. Leave manifest `status: ready`, post a preview/summ
 ## Configuration (set once, store in Paperclip secrets/config)
 - `ANTHROPIC_API_KEY` — content engine.
 - `PHOTO_POOL_DIR` — source stage photos. `BG_DIR` — processed backgrounds.
+- `ASSET_DIR` — real photo/video library (e.g. Keens 셀렉 사진). `ASSETS_INDEX` — `assets_index.json` (text, version-controlled with the skill).
 - `PUBLIC_HOST_URL` — where cards are hosted (Drive public / Cloudinary / S3) → `--base-url`.
 - Per-account `--handle`. Publishing/ManyChat tokens live in the external tools, not here.
 
@@ -94,6 +112,9 @@ When a batch is built, summarize: # posts, languages, scheduled dates, output fo
 ## Bundled resources
 - `scripts/build_cards.js` — render engine (batch JSON + bg → cards + manifest/CSV).
 - `scripts/prep_backgrounds.py` — photo → card-ready backgrounds (EXIF-safe).
+- `scripts/index_assets.py` — one-time/incremental asset indexer (vision-caption → `assets_index.json`).
+- `scripts/select_assets.py` — beat→photo selector (text-only) → compose `--map`.
+- `references/ASSET_INDEX_README.md` — asset-index architecture, schema & usage.
 - `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim).
 - `references/content_engine_prompts.md` — the 3-stage copy engine.
 - `references/brand_and_voice.md` — voice, do/don'ts, visual rules, account differences.
