@@ -174,12 +174,28 @@
       }}
     }
   }
+  // 헤드라인 자동 맞춤: 어떤 의도 줄(\n 기준)이 폭을 넘겨 추가로 줄넘침되면
+  // 그 카드의 헤드라인 폰트만 줄여 의도한 줄 수에 맞춘다(고립 줄·단어 넘침 방지).
+  function fitHeadlines(){
+    document.querySelectorAll('.headline').forEach(h=>{
+      const tc = h.textContent || '';
+      const intended = (tc.match(/\n/g)||[]).length + 1;
+      let size = parseFloat(getComputedStyle(h).fontSize) || 104;
+      const MIN = 52;
+      let guard = 0;
+      const lines = ()=> Math.round(h.offsetHeight/(size*1.04));
+      while(lines() > intended && size > MIN && guard++ < 60){
+        size -= 3; h.style.fontSize = size+'px';
+      }
+    });
+  }
   function build(){
     const d = window.CARD_DATA, stage = document.getElementById('stage');
     applyBrand(d);
     stage.innerHTML='';
     const total = d.total || d.cards.length;
     d.cards.forEach((card,i)=> stage.appendChild(buildCard(card,i,total,d.lang||'en')));
+    fitHeadlines();
   }
   build();
 </script>
