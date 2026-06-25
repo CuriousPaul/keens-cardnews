@@ -85,6 +85,13 @@ def scrim(img):
         a = int(255 * max(0, (0.62 - t) / 0.62) * 0.80)
         d2.line([(xx, 0), (xx, CH)], fill=a)
     base = Image.composite(Image.new("RGB", (CW, CH), (5, 10, 20)), base, ov2)
+    # 상단 darken — 배경 영상에 박힌 상단 로고/간판(예: 무대 행사명) 가리기
+    ov3 = Image.new("L", (CW, CH), 0); d3 = ImageDraw.Draw(ov3)
+    for yy in range(CH):
+        t = yy / CH
+        a = int(255 * max(0, (0.20 - t) / 0.20) ** 1.1 * 0.92)
+        d3.line([(0, yy), (CW, yy)], fill=a)
+    base = Image.composite(Image.new("RGB", (CW, CH), (3, 7, 15)), base, ov3)
     return base
 
 def pick_dark_bgs(n):
@@ -154,7 +161,9 @@ def main():
     posts = json.loads(Path(BATCH).read_text(encoding="utf-8"))
     main_post = posts[0]
     cards = list(main_post["cards"])
-    labels = ["01 커버", "02 문제", "03 경험0", "04 관점전환", "05 수업", "06 가격", "07 CTA"]
+    TYPE_KO = {"cover": "커버", "problem": "문제", "insight": "인사이트",
+               "perspective_shift": "관점전환", "cta": "CTA"}
+    labels = [f"{i+1:02d} {TYPE_KO.get(c.get('type'), '카드')}" for i, c in enumerate(cards)]
     # 변형 커버 추가
     var = posts[1]["cards"][0] if len(posts) > 1 else None
     items = list(zip(cards, labels))
@@ -167,6 +176,15 @@ def main():
     if var:
         rendered.append((render_card(var, 1, total, bgs[-1]), "01b 변형커버"))
 
+    # 개별 카드 PNG 저장 (argv[4] = cards_dir 주면): 01.png..0N.png + 01b_cover.png
+    if len(sys.argv) > 4:
+        cards_dir = Path(sys.argv[4]); cards_dir.mkdir(parents=True, exist_ok=True)
+        for i in range(len(cards)):
+            rendered[i][0].save(cards_dir / f"{i+1:02d}.png")
+        if var:
+            rendered[-1][0].save(cards_dir / "01b_cover.png")
+        print("cards →", cards_dir, len(list(cards_dir.glob('*.png'))), "PNG")
+
     # 컨택트시트: 4열
     cols = 4
     thumb_w = 520; thumb_h = int(thumb_w * CH / CW)
@@ -176,7 +194,7 @@ def main():
     SH = rows * (thumb_h + lab_h) + (rows + 1) * gap + 70
     sheet = Image.new("RGB", (SW, SH), (18, 22, 28))
     sd = ImageDraw.Draw(sheet)
-    sd.text((gap, 24), f"Keens — 남아 전용 카드뉴스 (배경={Path(BGDIR).name} · 검수용 컨택트시트)",
+    sd.text((gap, 24), f"Keens 카드뉴스 검수 컨택트시트 — {Path(BATCH).stem} (배경={Path(BGDIR).name})",
             font=F(KR_B, 30), fill=(255, 255, 255))
     for k, (im, lab) in enumerate(rendered):
         r, c = divmod(k, cols)
