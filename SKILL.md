@@ -51,6 +51,12 @@ Batch JSON shape (one object per post in `posts[]`):
 ```
 Card fields: `kicker` (top label), `headline` (bold; wrap key words in `<span class='hl'>` for the red accent — keep highlighted phrases short or they break across lines), `subhead` (use `<strong>` for emphasis), optional `stat` (big number) and `cta` (button on the final card). **Always include captions + a `dm_keyword`** — the no-code publisher and ManyChat depend on them.
 
+**Batch container & card-schema aliases (important):** the batch may be either `{ "posts": [...] }` **or a bare top-level array** `[ {post}, ... ]` — `build_cards.js` accepts both. Cards may use the visual fields above **or** the semantic schema `{ "type", "title", "body", "badge", "button", "footnote" }`; the template aliases them (`badge→kicker`, `title→headline`, `body→subhead`, `button→cta`, plus `footnote`). Mixing is fine, but **never assume the semantic fields render on their own** — they only work because `card_template_keens.html` maps them. If you fork the template, keep that mapping.
+
+**Length guard (auto-checked, enforce in copy):** headline line ≤16 chars, body/subhead ≤120 chars.
+
+**Glyph guard:** the CTA arrow uses `→` (U+2192). Do **not** use `➜` (U+279C) / `➔` (U+2794) / `➤` (U+27A4) — those are **absent from Noto Sans CJK** and render as tofu (□) under headless Chromium / Pillow. Stick to `→ › » ▶ ✓` if you need a glyph.
+
 ### Step 2 — Background prep
 The card look = white text over a **dark cinematic stage photo**. Process the Keens photo pool into card-ready backgrounds:
 ```bash
@@ -96,6 +102,16 @@ Beat vocab: hook_intro, doubt, turn_diagnosis, method_lesson, joy_basics, checkl
 ### Step 4 — Hand off (external, do not post from here)
 Read `references/nocode_publishing.md`. Sync `OUT_DIR/` to the public host so `image_urls` resolve, then let **Buffer/Later/Make** read the CSV and publish on `scheduled_date`. **ManyChat** keyword = each post's `dm_keyword` drives the comment→DM funnel to the Level Test landing.
 
+### Step 3d — QC before marking done (do this every batch)
+A clean-looking preview is **not** proof of a publishable render. Before declaring done:
+1. **Render through the real path.** Build at least the first post with `build_cards.js` (Step 3) and open a PNG — a quick Pillow/HTML preview can mask field-mapping or font gaps that only surface in the official renderer.
+2. **Length guard** — confirm headline lines ≤16 / body ≤120 (see Step 1).
+3. **Glyph check** — no tofu (□); CTA arrow is `→`, not `➜` (see Step 1).
+4. **Brand/guardrails** — no guarantee language ("무조건/합격/데뷔"), no minor-sensitive pressure (looks/weight), unverified USP claims (대표원장/SM 등) confirmed or omitted, synthetic stats stated as rank/sign only.
+5. **Casting match** — scene/photo people match the segment (e.g. boys set → boy footage, not female/ensemble stock).
+
+**Quick visual preview (no Chromium):** `python3 scripts/render_contact_sheet.py <BATCH_JSON> <BG_DIR> <OUT.jpg>` tiles all cards into one contact-sheet JPG over the chosen backgrounds — handy for copy/layout review and for extracting frames from video backgrounds. It shims the semantic→visual aliases, so **treat it as preview only**; the publish artifact still comes from `build_cards.js`.
+
 ## Human-review gate (early phase)
 Don't auto-publish at first. Leave manifest `status: ready`, post a preview/summary on the Issue, and let a human flip approved posts before the external tool publishes. As reject rate stabilizes, allow auto-flow per post type (avoid flipping everything at once).
 
@@ -115,7 +131,8 @@ When a batch is built, summarize: # posts, languages, scheduled dates, output fo
 - `scripts/index_assets.py` — one-time/incremental asset indexer (vision-caption → `assets_index.json`).
 - `scripts/select_assets.py` — beat→photo selector (text-only) → compose `--map`.
 - `references/ASSET_INDEX_README.md` — asset-index architecture, schema & usage.
-- `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim).
+- `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim, semantic-field aliases).
+- `scripts/render_contact_sheet.py` — Pillow contact-sheet preview (all cards → one JPG; preview only, not publish).
 - `references/content_engine_prompts.md` — the 3-stage copy engine.
 - `references/brand_and_voice.md` — voice, do/don'ts, visual rules, account differences.
 - `references/nocode_publishing.md` — Make/Buffer/Later + ManyChat hand-off.

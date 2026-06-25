@@ -75,6 +75,7 @@
     white-space:pre-line; max-width:820px; word-break:keep-all; overflow-wrap:break-word;
   }
   .subhead strong { color:#fff; font-weight:700; }
+  .footnote { font-size:30px; font-weight:500; color:var(--c-footer); margin-top:18px; white-space:pre-line; }
 
   /* 통계 강조형(인사이트 카드) */
   .stat { font-size:200px; font-weight:900; letter-spacing:-4px; line-height:.9;
@@ -128,7 +129,14 @@
     if(card.bg) c.style.backgroundImage =
       "linear-gradient(180deg, rgba(6,12,24,.22) 0%, rgba(6,12,24,.30) 38%, rgba(5,10,20,.80) 70%, rgba(3,7,15,.97) 100%), url('"+card.bg+"')";
 
-    if(card.kicker) c.appendChild(el('div','kicker', card.kicker));
+    // 의미 스키마(type/title/body/badge/button/footnote) ↔ 시각 필드 별칭.
+    // 정식 필드(headline/subhead/kicker/cta)가 있으면 그걸 우선, 없으면 의미 필드로 폴백.
+    const _kicker  = card.kicker  != null ? card.kicker  : card.badge;
+    const _head    = card.headline!= null ? card.headline: card.title;
+    const _sub     = card.subhead != null ? card.subhead : card.body;
+    const _cta     = card.cta     != null ? card.cta     : card.button;
+
+    if(_kicker) c.appendChild(el('div','kicker', _kicker));
 
     const block = el('div','block');
     if(card.body_html){
@@ -136,9 +144,10 @@
       block.innerHTML = card.body_html;
     } else {
       if(card.stat) block.appendChild(el('div','stat', card.stat));
-      if(card.headline) block.appendChild(el('div','headline', card.headline));
-      if(card.subhead)  block.appendChild(el('div','subhead', card.subhead));
-      if(card.cta)      block.appendChild(el('div','cta', "➜&nbsp;&nbsp;"+card.cta));
+      if(_head) block.appendChild(el('div','headline', _head));
+      if(_sub)  block.appendChild(el('div','subhead', _sub));
+      if(_cta)      block.appendChild(el('div','cta', "→&nbsp;&nbsp;"+_cta));
+      if(card.footnote) block.appendChild(el('div','footnote', card.footnote));
     }
     c.appendChild(block);
 

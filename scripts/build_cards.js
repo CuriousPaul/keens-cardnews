@@ -59,11 +59,13 @@ async function build(){
   const handle = args.handle || null;
 
   const batch = JSON.parse(fs.readFileSync(batchPath,'utf8'));
+  // bare 배열 배치(검증배치·boys 등)와 {posts:[...]} 래퍼 배치 모두 허용.
+  const posts = Array.isArray(batch) ? batch : (batch.posts || []);
   const bgs = bgDir ? fs.readdirSync(bgDir).filter(f=>f.endsWith('.png')||f.endsWith('.jpg'))
                         .sort().map(f=>'file://'+path.resolve(bgDir,f)) : [];
   fs.mkdirSync(outDir,{recursive:true});
 
-  const dates = scheduleDates(batch.posts.length, args.start, parseInt(args.cadence||'1'), !!args['skip-weekends']);
+  const dates = scheduleDates(posts.length, args.start, parseInt(args.cadence||'1'), !!args['skip-weekends']);
 
   const browser = await puppeteer.launch({ headless:'new', args:['--no-sandbox','--disable-setuid-sandbox','--allow-file-access-from-files','--font-render-hinting=none'] });
   const page = await browser.newPage();
@@ -74,8 +76,8 @@ async function build(){
   const manifest = { brand:'Keens', generated_at:new Date().toISOString(), base_url:baseUrl, posts:[] };
   let g=0;
 
-  for (let p=0; p<batch.posts.length; p++){
-    const post = batch.posts[p];
+  for (let p=0; p<posts.length; p++){
+    const post = posts[p];
     post.cards.forEach(c => { if (!c.bg && bgs.length){ c.bg = bgs[g % bgs.length]; g++; } });
 
     const postDir = path.join(outDir, post.post_id);
