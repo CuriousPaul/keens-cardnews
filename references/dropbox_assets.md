@@ -66,6 +66,25 @@ emit-map에서 **그 인덱스가 빠진다** → 해당 카드는 배경 없이
   - → **cta/finale와 다크 무대샷은 `99. 킨즈 퍼포먼스` 영상 키프레임으로 보강**(ffmpeg로 한 컷 추출 → index_dropbox_assets.py manifest에 local_path로 추가 → 비전 태깅).
 - 미인덱싱(증분 대상): 02/사진 잔여 ~17장(전사 누락분), `룩 강의사진`(228)·`퍼포머 with 아티스트`(101)·`두번째 데이트 강의사진`(87). 위 2절 루프 반복.
 
+## 6. 퍼포먼스 키프레임 — cta/finale/hook 보강 (`perf_keyframes_index.json`)
+02/사진은 다크 무대샷이 없어 **cta·finale=0**. 이를 `99. 킨즈 퍼포먼스/영상 소스 모음/강사 퍼포먼스 영상`
+의 ffmpeg 키프레임으로 채웠다. 키프레임은 Dropbox 파일이 아니라 추출 정지컷이므로 **스킬에 JPG로 동봉**
+(`assets/perf_keyframes/`, 2.2MB) + 별도 인덱스 `references/perf_keyframes_index.json`(source=local_keyframe).
+다운로드 불필요 — 항상 로컬. 재현 정보(`src_video_ns`,`t_sec`) 포함.
+
+- 17컷(영상 5개): finale 10, cta 6, hook_intro 5, joy 6 … 전 비트 커버. 제이릭 **세로(portrait) 4컷**=4:5 카드 최적, KEENS 백드롭 1컷=cta.
+- 보류(증분): 큰 영상 3개(Unforgiven 560MB·Impurities 432/323MB)는 미추출 — 필요시 download_link→ffmpeg 추가.
+
+**조합 선택 패턴(권장):** 본문 비트(doubt/turn/method/joy/checklist)는 02/사진(Dropbox 다운로드),
+무대 비트(hook_intro/cta/finale)는 퍼포먼스 키프레임(로컬)에서 각각 select → 카드별 bg를 합쳐 compose.
+```bash
+# 무대 비트: 로컬 키프레임 (다운로드 없음)
+python3 scripts/select_assets.py references/perf_keyframes_index.json --sequence hook_intro,cta,finale --emit-map --root assets/perf_keyframes
+# 본문 비트: 02/사진 (emit-download-list → download_link → cache)
+python3 scripts/select_assets.py references/dropbox_assets_index.json --sequence doubt,turn_diagnosis,method_lesson,checklist_text --emit-download-list
+```
+키프레임 갱신/추가: download_link(영상)→`ffmpeg -ss <t> -i v.mp4 -frames:v 1 -vf scale=1280:-2 out.jpg`→비전 태깅→인덱스 append.
+
 ## 5. 가드레일 (브랜드 규칙 준수)
 - `스텝픽` 등 **외부사용불가/타사 IP** 영상은 카드·광고 소재 금지.
 - 미성년자 이미지: 정숙·건강 프레임만, 외모 평가성 카피 금지(`kids:true` 태깅으로 추적).

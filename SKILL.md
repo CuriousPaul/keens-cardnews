@@ -148,7 +148,8 @@ When a batch is built, summarize: # posts, languages, scheduled dates, output fo
 - `references/ASSET_INDEX_README.md` — asset-index architecture, schema & usage.
 - `references/dropbox_assets.md` — Dropbox MCP 연동 런북(검색→다운로드→인덱싱→선택→가져오기).
 - `references/dropbox_catalog.json` — Dropbox 자산 폴더 지도(ns_path·개수·역할).
-- `references/dropbox_assets_index.json` — Dropbox 소스 인덱스(POC 20장, 02/사진).
+- `references/dropbox_assets_index.json` — Dropbox 소스 인덱스(249장, 02/사진).
+- `references/perf_keyframes_index.json` + `assets/perf_keyframes/` — 무대 퍼포먼스 키프레임 17컷(로컬 JPG). **cta/finale/hook용 다크 무대샷** — 02/사진이 못 채우는 비트 보강(다운로드 불필요, `--root assets/perf_keyframes`).
 - `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim, semantic-field aliases).
 - `scripts/render_contact_sheet.py` — Pillow contact-sheet preview (all cards → one JPG; preview only, not publish).
 - `references/content_engine_prompts.md` — the 3-stage copy engine.
