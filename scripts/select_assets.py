@@ -39,10 +39,11 @@ def score(rec, beat, prefer_dark):
     if prefer_dark and rec.get("dark_bottom_textzone"): s+=1
     return s
 
-def candidates(assets, beat, kids, brand, prefer_dark):
+def candidates(assets, beat, kids, brand, prefer_dark, no_kids=False):
     rows=[]
     for r in assets:
         if kids and not r.get("kids"): continue
+        if no_kids and r.get("kids"): continue          # 미성년 제외(보호용)
         if brand and not r.get("brand_visible"): continue
         sc=score(r,beat,prefer_dark)
         if sc>=0: rows.append((sc,r))
@@ -54,8 +55,12 @@ def main():
     ap.add_argument("index"); ap.add_argument("--beat"); ap.add_argument("--sequence")
     ap.add_argument("--top",type=int,default=5)
     ap.add_argument("--kids",action="store_true"); ap.add_argument("--brand",action="store_true")
-    ap.add_argument("--prefer-dark",action="store_true",default=True)
+    ap.add_argument("--no-kids",action="store_true",help="미성년(kids:true) 자산 제외(보호용)")
+    ap.add_argument("--prefer-dark",dest="prefer_dark",action="store_true",default=True)
+    ap.add_argument("--no-prefer-dark",dest="prefer_dark",action="store_false")
     ap.add_argument("--root",default=""); ap.add_argument("--emit-map",action="store_true")
+    ap.add_argument("--emit-download-list",action="store_true",
+                    help="선택된 자산의 [file,file_id,ns_path] JSON 출력 → Dropbox download_link 입력")
     ap.add_argument("--exclude",default="",help="comma-separated filenames to skip (avoid reusing across sets)")
     a=ap.parse_args()
     doc=json.load(open(a.index,encoding="utf-8")); assets=doc["assets"]
@@ -67,11 +72,20 @@ def main():
         used=set(); chosen=[]
         for beat in beats:
             picked=None
-            for sc,r in candidates(assets,beat,a.kids,a.brand,a.prefer_dark):
+            for sc,r in candidates(assets,beat,a.kids,a.brand,a.prefer_dark,a.no_kids):
                 if r["file"] in used: continue
                 picked=r; used.add(r["file"]); break
             chosen.append((beat,picked))
-        if a.emit_map:
+        # 미충족 비트 경고(조용히 배경 없는 카드 방지)
+        unfilled=[beat for beat,r in chosen if r is None]
+        if unfilled:
+            print(f"[warn] 인덱스에서 채우지 못한 비트: {', '.join(unfilled)} "
+                  f"→ 99.킨즈퍼포먼스 키프레임/AI장면(3b)으로 보강 필요. 해당 카드 배경이 비어 렌더됨.",
+                  file=sys.stderr)
+        if a.emit_download_list:
+            dl=[[r['file'], r.get('file_id',''), r.get('ns_path','')] for beat,r in chosen if r]
+            print(json.dumps(dl,ensure_ascii=False))
+        elif a.emit_map:
             parts=[]
             for i,(beat,r) in enumerate(chosen):
                 if r: parts.append(f"{i}:{a.root.rstrip('/')+'/' if a.root else ''}{r['file']}")

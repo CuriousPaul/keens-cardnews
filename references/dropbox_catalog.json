@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "generated": "2026-06-25",
+  "source": "Dropbox MCP (team: Counter Culture / 사내 공용 keens_edu@c-3.co)",
+  "note": "카드뉴스 자산 후보 폴더 구조 카탈로그. ns_path는 Dropbox MCP(list_folder/download_link/get_file_content)에 그대로 사용. 폴더(ns:<id>//...)는 절대 ns 접두사 제거 금지.",
+  "namespaces": {
+    "3283520483": "킨즈 서울",
+    "5805398736": "출시영상"
+  },
+  "asset_categories": {
+    "still_photo_pool": "02. 활용 가능 이미지 (712장, DSC 강의·퍼포먼스 사진) — 카드 배경 1순위",
+    "finished_marketing_images": "5. 마컴물 내 '이미지 단장' 서브폴더 (완성 단장 PNG ~110장)",
+    "marketing_video": "5. 마컴물 (릴스/피드/배너 영상 330개) + 99. 킨즈 퍼포먼스 (강사 퍼포먼스 8개)",
+    "brand_diagram": "브랜드 이미지 (10 소형 jpg/png + pptx)",
+    "reference_only_unusable": "스텝픽 (아이돌 안무 모니터링 영상, 일부 '외부 사용 불가') — 카드 소재 부적합"
+  },
+  "folders": [
+    {
+      "key": "활용가능이미지",
+      "label": "출시영상 / 02. 활용 가능 이미지",
+      "ns_path": "ns:5805398736//02. 활용 가능 이미지",
+      "role": "STILL_PHOTO_POOL (배경 1순위)",
+      "totals": { "images": 712, "videos": 0, "other": 6, "bytes": 5384418131 },
+      "era": "2019 (DSC 원본 사진)",
+      "subfolders": [
+        { "name": "사진", "ns_path": "ns:5805398736//02. 활용 가능 이미지/사진", "images": 266, "videos": 0, "sample": ["DSC04532.JPG","DSC04527.JPG","DSC04744.JPG"] },
+        { "name": "룩 강의사진", "ns_path": "ns:5805398736//02. 활용 가능 이미지/룩 강의사진", "images": 228, "videos": 0, "sample": ["DSC04404.JPG","DSC04308.JPG","DSC04282.JPG"] },
+        { "name": "퍼포머 with 아티스트", "ns_path": "ns:5805398736//02. 활용 가능 이미지/퍼포머 with 아티스트", "images": 101, "videos": 0, "sample": ["그림4.jpg","그림5.jpg","그림7.jpg"] },
+        { "name": "두번째 데이트 강의사진", "ns_path": "ns:5805398736//02. 활용 가능 이미지/두번째 데이트 강의사진", "images": 87, "videos": 0, "sample": ["DSC04795.jpg","DSC04907.jpg","DSC05120.jpg"] },
+        { "name": "100. 썸네일 작업물", "ns_path": "ns:5805398736//02. 활용 가능 이미지/100. 썸네일 작업물", "images": 30, "videos": 0, "other": 3, "sample": ["thumbnail_mo_goingcrazy.jpg","thumbnail_pc_look.jpg"] }
+      ]
+    },
+    {
+      "key": "마컴물",
+      "label": "킨즈 서울 / 5. 마컴물",
+      "ns_path": "ns:3283520483//5. 마컴물",
+      "role": "MARKETING_VIDEO(주) + FINISHED_IMAGES(이미지 단장)",
+      "totals": { "images": 110, "videos": 330, "other": 83, "bytes": 179489209238 },
+      "image_subfolders": [
+        { "name": "260304 킨즈서울 마컴물 (이미지 단장)", "ns_path": "ns:3283520483//5. 마컴물/260304 킨즈서울 마컴물 (이미지 단장)", "images": 28 },
+        { "name": "260520_킨즈서울 마컴물 (쇼케이스, 이미지 단장)", "ns_path": "ns:3283520483//5. 마컴물/260520_킨즈서울 마컴물 (쇼케이스, 이미지 단장)", "images": 27 },
+        { "name": "251031_이미지형 단장 마컴물 소재 (비기너, 남학생반)", "ns_path": "ns:3283520483//5. 마컴물/251031_이미지형 단장 마컴물 소재 (비기너, 남학생반)", "images": 28 },
+        { "name": "251128_이미지형 단장 마컴물 소재 (겨울방학 특강)", "ns_path": "ns:3283520483//5. 마컴물/251128_이미지형 단장 마컴물 소재 (겨울방학 특강)", "images": 26 }
+      ],
+      "video_subfolders_top": [
+        { "name": "광고 쌤들 촬영본", "videos": 78, "other": 82, "note": "원본 촬영 + XML 사이드카(C00xx.MP4)" },
+        { "name": "250814_고객 리뷰형 마컴물_최종", "videos": 56, "bytes": 38597664974 },
+        { "name": "4차 테스팅_250410", "videos": 32 },
+        { "name": "250729_여름방학특강", "videos": 36 },
+        { "name": "260526_킨즈서울 마컴물 (쇼케이스, 영상)", "videos": 18 },
+        { "name": "250808_선생님 인터뷰_배너형", "videos": 16 },
+        { "name": "250116_선생님들 인터뷰", "videos": 6, "bytes": 56954796392, "note": "인터뷰 원본(전사→증언 인용문 뱅크 후보)" }
+      ]
+    },
+    {
+      "key": "킨즈퍼포먼스",
+      "label": "킨즈 서울 / 99. 킨즈 퍼포먼스",
+      "ns_path": "ns:3283520483//99. 킨즈 퍼포먼스",
+      "role": "PERFORMANCE_VIDEO (강사 퍼포먼스 — 키프레임/릴스 소스)",
+      "totals": { "images": 0, "videos": 8, "other": 0, "bytes": 1668444761 },
+      "subfolders": [
+        { "name": "영상 소스 모음/강사 퍼포먼스 영상", "ns_path": "ns:3283520483//99. 킨즈 퍼포먼스/영상 소스 모음", "videos": 8, "sample": ["1. 제이릭 - 크라운 쏠로 세로 -.mp4","3. 유리, 혜인 - KEENS - That's NONO 유리혜인샘 Final 4k.mp4","2, 리예 - 도깨비불 by Riye_나고야_230824.MP4"] }
+      ]
+    },
+    {
+      "key": "브랜드이미지",
+      "label": "킨즈 서울 / 브랜드 이미지",
+      "ns_path": "ns:3283520483//브랜드 이미지",
+      "role": "BRAND_DIAGRAM (소형, pptx 추출 이미지)",
+      "totals": { "images": 10, "videos": 0, "other": 1, "bytes": 22000000 },
+      "files_sample": ["그림1.jpg(960x512)","그림3.png","그림4.png","keens_0422.pptx"]
+    },
+    {
+      "key": "스텝픽",
+      "label": "킨즈 서울 / 스텝픽",
+      "ns_path": "ns:3283520483//스텝픽",
+      "role": "REFERENCE_ONLY (아이돌 안무 모니터링 — 카드 소재 부적합, 일부 외부사용불가)",
+      "totals": { "images": 0, "videos": 6, "other": 0 },
+      "subfolders": [
+        { "name": "스텝픽/Monitor", "videos": 6, "sample": ["Riize fly up Boy 1.mp4","aespa Dirty work - 혜민.mp4","(외부 사용 불가) ILLIT jellyous - 효리.mp4"] }
+      ]
+    }
+  ]
+}

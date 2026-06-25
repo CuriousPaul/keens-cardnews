@@ -99,6 +99,20 @@ Practitioner feedback: parents react negatively to an obvious "AI" feel, so for 
    ```
 Beat vocab: hook_intro, doubt, turn_diagnosis, method_lesson, joy_basics, checklist_text, cta, finale. Filters: `--kids --brand --prefer-dark`. Use AI scene generation (3b) **only to fill beats the library lacks**. For an A/B test (AI vs real), keep copy/layout/theme identical and swap only `bg`.
 
+### Step 3e — Dropbox asset library (team library via MCP)
+When the local pool is thin, pull from the **Dropbox** library (team: Counter Culture). Full runbook in `references/dropbox_assets.md`; folder map in `references/dropbox_catalog.json`. Same index schema as 3c, so `select_assets.py` works across local + Dropbox indexes.
+```bash
+SEQ="hook_intro,doubt,turn_diagnosis,method_lesson,joy_basics,checklist_text,cta"
+# (1) get chosen [file,file_id,ns_path] (unfilled beats warn to stderr)
+DL=$(python3 scripts/select_assets.py references/dropbox_assets_index.json --sequence "$SEQ" --emit-download-list)
+# (2) agent: download_link(file_ids ≤25, single-use) → curl -L -o cache/<file>
+# (3) same sequence → emit-map (root=cache) → compose → render
+MAP=$(python3 scripts/select_assets.py references/dropbox_assets_index.json --sequence "$SEQ" --emit-map --root cache)
+python3 scripts/compose_scenes.py <BATCH_JSON> /tmp/none <OUT_BG_DIR> <COMPOSED_JSON> --map "$MAP"
+```
+⚠️ select가 못 채운 비트(현 인덱스 cta/finale)는 emit-map에서 빠져 **배경 없는 카드**가 됨 → 99.킨즈퍼포먼스 키프레임/AI장면(3b)으로 보강. `--no-kids`(미성년 제외)/`--brand`(KEENS 백드롭) 필터 지원.
+Indexing new files: `download_link`(≤25 single-use) → `curl` → `scripts/index_dropbox_assets.py manifest.json` → contact sheet로 태깅 → `--apply-tags`(people+mood 둘 다 있어야 vision 승급, kids는 사람 확인 플래그). 사진 풀 1순위=`출시영상/02. 활용 가능 이미지`(712장). ⚠️`스텝픽`(아이돌 안무 모니터링·외부사용불가)은 소재 금지.
+
 ### Step 4 — Hand off (external, do not post from here)
 Read `references/nocode_publishing.md`. Sync `OUT_DIR/` to the public host so `image_urls` resolve, then let **Buffer/Later/Make** read the CSV and publish on `scheduled_date`. **ManyChat** keyword = each post's `dm_keyword` drives the comment→DM funnel to the Level Test landing.
 
@@ -129,8 +143,12 @@ When a batch is built, summarize: # posts, languages, scheduled dates, output fo
 - `scripts/build_cards.js` — render engine (batch JSON + bg → cards + manifest/CSV).
 - `scripts/prep_backgrounds.py` — photo → card-ready backgrounds (EXIF-safe).
 - `scripts/index_assets.py` — one-time/incremental asset indexer (vision-caption → `assets_index.json`).
-- `scripts/select_assets.py` — beat→photo selector (text-only) → compose `--map`.
+- `scripts/select_assets.py` — beat→photo selector (text-only) → compose `--map`. Works on local **and** Dropbox indexes.
+- `scripts/index_dropbox_assets.py` — Dropbox-download → PIL features → index (`--apply-tags` for vision승급).
 - `references/ASSET_INDEX_README.md` — asset-index architecture, schema & usage.
+- `references/dropbox_assets.md` — Dropbox MCP 연동 런북(검색→다운로드→인덱싱→선택→가져오기).
+- `references/dropbox_catalog.json` — Dropbox 자산 폴더 지도(ns_path·개수·역할).
+- `references/dropbox_assets_index.json` — Dropbox 소스 인덱스(POC 20장, 02/사진).
 - `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim, semantic-field aliases).
 - `scripts/render_contact_sheet.py` — Pillow contact-sheet preview (all cards → one JPG; preview only, not publish).
 - `references/content_engine_prompts.md` — the 3-stage copy engine.
