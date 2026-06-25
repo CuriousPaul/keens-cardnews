@@ -72,8 +72,9 @@ emit-map에서 **그 인덱스가 빠진다** → 해당 카드는 배경 없이
 (`assets/perf_keyframes/`, 2.2MB) + 별도 인덱스 `references/perf_keyframes_index.json`(source=local_keyframe).
 다운로드 불필요 — 항상 로컬. 재현 정보(`src_video_ns`,`t_sec`) 포함.
 
-- 17컷(영상 5개): finale 10, cta 6, hook_intro 5, joy 6 … 전 비트 커버. 제이릭 **세로(portrait) 4컷**=4:5 카드 최적, KEENS 백드롭 1컷=cta.
-- 보류(증분): 큰 영상 3개(Unforgiven 560MB·Impurities 432/323MB)는 미추출 — 필요시 download_link→ffmpeg 추가.
+- **30컷**(영상 7개): 1차 17컷(darkness-only) + **HQ 13컷**(Impurities 4K 2개, 선명도 Laplacian 필터로 모션블러·산만컷 제거 → 시네마틱·선명). `sharpness` 필드 포함. 제이릭 **세로 4컷**=4:5 최적, KEENS 백드롭 1컷=cta.
+- 품질 메모: 1차 17컷은 압축 영상이라 일부 흐릿/산만 → 발행엔 **HQ(hq_*) 우선** 권장. 보류: Unforgiven 560MB 미추출(필요시 추가).
+- ⚠️ 5.마컴물 '이미지 단장' 110장은 **완성 크리에이티브(로고+카피 박힘)라 배경 불가**(검토 완료) — 무텍스트 원본 소스 별도 확보 필요.
 
 **조합 선택 패턴(권장):** 본문 비트(doubt/turn/method/joy/checklist)는 02/사진(Dropbox 다운로드),
 무대 비트(hook_intro/cta/finale)는 퍼포먼스 키프레임(로컬)에서 각각 select → 카드별 bg를 합쳐 compose.
