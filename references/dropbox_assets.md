@@ -86,6 +86,18 @@ python3 scripts/select_assets.py references/dropbox_assets_index.json --sequence
 ```
 키프레임 갱신/추가: download_link(영상)→`ffmpeg -ss <t> -i v.mp4 -frames:v 1 -vf scale=1280:-2 out.jpg`→비전 태깅→인덱스 append.
 
+## 7. Paperclip 구현 체크리스트 (나중에 에이전트에서 실행)
+스킬 파일은 GitHub로 배포됨. **런타임에서 추가로 필요한 것:**
+1. **Dropbox MCP 커넥터를 "Keens Content Maker" 에이전트에 연결** — 02/사진(249) 같은 Dropbox 소스는
+   런타임에 `search`/`list_folder`/`download_link` MCP 호출로 받아온다. 에이전트 환경에 Dropbox MCP가
+   없으면 본문 비트 배경 수집이 실패. (서버: `https://mcp.dropbox.com/mcp`, 팀 Counter Culture)
+2. **퍼포먼스 키프레임(30컷)은 오프라인 OK** — 로컬 JPG로 스킬에 동봉돼 Dropbox 없이도 hook/cta/finale 사용 가능.
+   즉 Dropbox 미연결 상태에서도 무대 비트 카드는 만들 수 있음(본문 비트만 02/사진 의존).
+3. **렌더 의존성**: `npm i puppeteer`, `pip install pillow numpy`(+키프레임 추가 추출 시 `ffmpeg`). NEW_MACHINE_SETUP 참고.
+4. **선택 워크플로**: 무대 비트=`perf_keyframes_index.json`(--root assets/perf_keyframes), 본문 비트=`dropbox_assets_index.json`(--emit-download-list→download_link→cache). §3·§6 참조.
+5. **단일사용 URL 주의**: download_link는 1회 GET. preflight 금지, 받으면 즉시 curl.
+6. **증분 인덱싱 위치**: 새 자산은 맥(Paperclip 러너)에서 download_link→ffmpeg/PIL→index_dropbox_assets.py로 추가.
+
 ## 5. 가드레일 (브랜드 규칙 준수)
 - `스텝픽` 등 **외부사용불가/타사 IP** 영상은 카드·광고 소재 금지.
 - 미성년자 이미지: 정숙·건강 프레임만, 외모 평가성 카피 금지(`kids:true` 태깅으로 추적).
