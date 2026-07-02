@@ -4,9 +4,3 @@ out/
 .DS_Store
 __pycache__/
 __pycache__/
-
-# 실제 촬영 키프레임(무대·관객)은 공개 repo에 커밋하지 않음.
-# 인덱스의 src_video_ns+t_sec로 materialize_keyframes.py가 Dropbox에서 재생성.
-assets/perf_keyframes/*.jpg
-assets/perf_keyframes/*.png
-references/tl_captions.json
