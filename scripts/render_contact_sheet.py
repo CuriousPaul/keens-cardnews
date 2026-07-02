@@ -9,6 +9,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageStat
 
 BATCH, BGDIR, OUT = sys.argv[1], sys.argv[2], sys.argv[3]
+BGS = [p for p in sys.argv[4].split(",") if p] if len(sys.argv) > 4 else None
 CW, CH = 1080, 1350
 PAD = 84
 ACCENT = (232, 71, 43)      # Keens red
@@ -168,7 +169,11 @@ def main():
     var = posts[1]["cards"][0] if len(posts) > 1 else None
     items = list(zip(cards, labels))
     n = len(items) + (1 if var else 0)
-    bgs = pick_dark_bgs(n)
+    if BGS:                                  # 카드 순서대로 지정된 배경(부족하면 순환)
+        from pathlib import Path as _P
+        bgs = [_P(BGS[i % len(BGS)]) for i in range(n)]
+    else:
+        bgs = pick_dark_bgs(n)
     total = len(cards)
     rendered = []
     for i, (c, lab) in enumerate(items):
