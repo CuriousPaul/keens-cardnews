@@ -174,6 +174,7 @@ def main():
             doc["assets"].append({
                 "id": stem, "file": stem + ".jpg", "source": "twelvelabs_moment", "type": "video_keyframe",
                 "path_rel": f"assets/perf_keyframes/{stem}.jpg", "src_video_ns": m["ns"], "t_sec": t,
+                "moment_start": round(hit["start"], 1), "moment_end": round(hit["end"], 1),  # Phase2 클립 자르기용
                 "people": tg.get("people", "group"), "mood": tg.get("mood", "intense"),
                 "kids": bool(tg.get("kids", False)), "brand_visible": bool(tg.get("brand_visible", False)),
                 "subject": tg.get("subject", "stage_performance"), "note": f"TL:{beat}",
