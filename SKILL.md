@@ -149,8 +149,8 @@ When a batch is built, summarize: # posts, languages, scheduled dates, output fo
 - `references/dropbox_assets.md` — Dropbox MCP 연동 런북(검색→다운로드→인덱싱→선택→가져오기).
 - `references/dropbox_catalog.json` — Dropbox 자산 폴더 지도(ns_path·개수·역할).
 - `references/dropbox_assets_index.json` — Dropbox 소스 인덱스(249장, 02/사진).
-- `references/perf_keyframes_index.json` — 무대 퍼포먼스 키프레임 인덱스(cta/finale/hook용 다크 무대샷, TL/수동 회수분). ⚠️**실제 이미지(assets/perf_keyframes/*.jpg)는 공개 repo에서 제외됨** — 첫 실행 시 `scripts/materialize_keyframes.py`로 인덱스의 `src_video_ns`+`t_sec`를 통해 Dropbox 원본에서 재생성해 로컬에 채운 뒤 `--root assets/perf_keyframes` 사용.
-- `scripts/materialize_keyframes.py` — 제외된 키프레임을 Dropbox 원본에서 재생성(`--list-needed`→download_link→`--extract mapping.json`).
+- `references/perf_keyframes_index.json` + `assets/perf_keyframes/*.jpg` — 무대 퍼포먼스 키프레임(cta/finale/hook용 다크 무대샷). **이미지 repo에 동봉**(다운로드 불필요, `--root assets/perf_keyframes`).
+- `scripts/materialize_keyframes.py` — (옵션 복구도구) 이미지가 없을 때 인덱스의 `src_video_ns`+`t_sec`로 Dropbox 원본에서 재생성(`--list-needed`→download_link→`--extract mapping.json`).
 - `scripts/tl_video_search.py` — [영상] TwelveLabs Marengo검색+Pegasus자동태깅(스키마+캡션)+선명도선별. moment_start/end 저장(Phase2 클립용). `--no-pegasus`로 검색만.
 - `scripts/card_template_keens.html` — card design (brand tokens, KO/EN, `bg` slot, scrim, semantic-field aliases).
 - `scripts/render_contact_sheet.py` — Pillow contact-sheet preview (all cards → one JPG; preview only, not publish).

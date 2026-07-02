@@ -68,10 +68,9 @@ emit-map에서 **그 인덱스가 빠진다** → 해당 카드는 배경 없이
 
 ## 6. 퍼포먼스 키프레임 — cta/finale/hook 보강 (`perf_keyframes_index.json`)
 02/사진은 다크 무대샷이 없어 **cta·finale=0**. 이를 `99. 킨즈 퍼포먼스/영상 소스 모음/강사 퍼포먼스 영상`
-의 ffmpeg 키프레임으로 채웠다. 인덱스 `references/perf_keyframes_index.json`(재현정보 `src_video_ns`+`t_sec`).
-⚠️ **실제 JPG(`assets/perf_keyframes/`)는 공개 repo에서 제외**(무대·관객 이미지 비공개). 첫 실행 시
-`scripts/materialize_keyframes.py --list-needed` → 필요한 원본을 Dropbox `download_link`로 받아 mapping.json →
-`--extract`로 프레임 재생성해 로컬에 채운 뒤 사용.
+의 ffmpeg 키프레임으로 채웠다. 인덱스 `references/perf_keyframes_index.json`(재현정보 `src_video_ns`+`t_sec`) +
+**이미지 `assets/perf_keyframes/*.jpg` repo 동봉**. 이미지가 없을 때만 `scripts/materialize_keyframes.py`로
+Dropbox 원본에서 재생성(옵션 복구).
 다운로드 불필요 — 항상 로컬. 재현 정보(`src_video_ns`,`t_sec`) 포함.
 
 - **30컷**(영상 7개): 1차 17컷(darkness-only) + **HQ 13컷**(Impurities 4K 2개, 선명도 Laplacian 필터로 모션블러·산만컷 제거 → 시네마틱·선명). `sharpness` 필드 포함. 제이릭 **세로 4컷**=4:5 최적, KEENS 백드롭 1컷=cta.
@@ -93,7 +92,7 @@ python3 scripts/select_assets.py references/dropbox_assets_index.json --sequence
 1. **Dropbox MCP 커넥터를 "Keens Content Maker" 에이전트에 연결** — 02/사진(249) 같은 Dropbox 소스는
    런타임에 `search`/`list_folder`/`download_link` MCP 호출로 받아온다. 에이전트 환경에 Dropbox MCP가
    없으면 본문 비트 배경 수집이 실패. (서버: `https://mcp.dropbox.com/mcp`, 팀 Counter Culture)
-2. **퍼포먼스 키프레임은 첫 실행 때 materialize** — 이미지가 repo에 없으므로 `materialize_keyframes.py`로 Dropbox 원본에서 1회 재생성(이후 로컬 캐시). 즉 hook/cta/finale도 Dropbox 접근이 최초 1회 필요.
+2. **퍼포먼스 키프레임(오프라인 OK)** — repo에 동봉돼 Dropbox 없이도 hook/cta/finale 사용 가능(이미지 유실 시에만 materialize).
    즉 Dropbox 미연결 상태에서도 무대 비트 카드는 만들 수 있음(본문 비트만 02/사진 의존).
 3. **렌더 의존성**: `npm i puppeteer`, `pip install pillow numpy`(+키프레임 추가 추출 시 `ffmpeg`). NEW_MACHINE_SETUP 참고.
 4. **선택 워크플로**: 무대 비트=`perf_keyframes_index.json`(--root assets/perf_keyframes), 본문 비트=`dropbox_assets_index.json`(--emit-download-list→download_link→cache). §3·§6 참조.
